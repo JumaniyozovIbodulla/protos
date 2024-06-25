@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package groups;
+
+option go_package = "genproto/user_service";
+
+service GroupsService {
+    rpc Create(CreateGroup) returns (Group) {}
+    rpc GetById(GroupPrimaryKey) returns (Group) {}
+    rpc GetAll(GetListGroupsRequest) returns (GetListGroupsResponse) {}
+    rpc Update(UpdateGroup) returns (Group) {}
+    rpc Delete(GroupPrimaryKey) returns (Empty) {}
+}
+
+message Empty {}
+
+enum CourseType {
+    beginner = 0;
+    elementary = 1;
+    pre_intermediate = 2;
+    intermediate = 3;
+    upper_intermediate = 4;
+    ielts_level_one = 5;
+    ielts_level_two = 6;
+}
+
+message GroupPrimaryKey {
+    string id = 1;
+}
+
+message CreateGroup {
+    string name = 1;
+    CourseType level = 2;
+    int32 months = 3;
+    int32 number_of_students = 4;
+    string branch_id = 5;
+}
+
+message Group {
+    string id = 1;
+    string extra_id = 2;
+    string name = 3;
+    CourseType level = 4;
+    int32 months = 5;
+    int32 number_of_students = 6;
+    string branch_id = 7;
+    string created_at = 8;
+}
+
+message UpdateGroup {
+    string name = 1;
+    CourseType level = 2;
+    int32 months = 3;
+    int32 number_of_students = 4;
+    string branch_id = 5;
+}
+
+message GetListGroupsRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+    string search = 3;
+}
+
+message GetListGroupsResponse {
+    int64 Count = 1;
+    repeated Group Groups = 2;
+}

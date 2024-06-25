@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package students;
+
+option go_package = "genproto/user_service";
+
+service StudentService {
+    rpc Create(CreateStudent) returns (Student) {}
+    rpc GetById(StudentPrimaryKey) returns (Student) {}
+    rpc GetAll(GetListStudentsRequest) returns (GetListStudentsResponse) {}
+    rpc Update(UpdateStudent) returns (Student) {}
+    rpc Delete(StudentPrimaryKey) returns (Empty) {}
+}
+
+message Empty {}
+
+message StudentPrimaryKey {
+    string id = 1;
+}
+
+message CreateStudent {
+    string full_name = 1;
+    string phone = 2;
+    string password = 3;
+    double paid_sum = 4;
+    int32  course_count = 5;
+    double total_sum = 6;
+    string branch_id = 7;
+    string group_id = 8;
+}
+
+message Student {
+    string id = 1;
+    string extra_id = 2;
+    string full_name = 3;
+    string phone = 4;
+    string password = 5;
+    double paid_sum = 6;
+    int32  course_count = 7;
+    double total_sum = 8;
+    string branch_id = 9;
+    string group_id = 10;
+    string created_at = 11;
+}
+
+message UpdateStudent {
+    string full_name = 1;
+    string phone = 2;
+    string password = 3;
+    double paid_sum = 4;
+    int32  course_count = 5;
+    double total_sum = 6;
+    string branch_id = 7;
+    string group_id = 8;
+}
+
+message GetListStudentsRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+    string search = 3;
+}
+
+message GetListStudentsResponse {
+    int64 Count = 1;
+    repeated Student Students = 2;
+}

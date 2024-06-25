@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package join_events;
+
+option go_package = "genproto/user_service";
+
+service JoinEventService {
+    rpc Create(CreateJoinEvent) returns (JoinEvent) {}
+    rpc GetById(JoinEventPrimaryKey) returns (JoinEvent) {}
+}
+
+message Empty {}
+
+message JoinEventPrimaryKey {
+    string id = 1;
+}
+
+message CreateJoinEvent {
+    string event_id = 1;
+    string student_id = 2;
+}
+
+message JoinEvent {
+    string id = 1;
+    string event_id = 2;
+    string student_id = 3;
+    string joined_at = 4;
+}

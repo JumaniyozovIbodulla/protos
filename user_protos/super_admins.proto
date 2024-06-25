@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package super_admins;
+
+option go_package = "genproto/user_service";
+
+service SuperAdminService {
+    rpc Create(CreateSuperAdmin) returns (SuperAdmin) {}
+    rpc GetById(SuperAdminPrimaryKey) returns (SuperAdmin) {}
+    rpc GetAll(GetListSuperAdminRequest) returns (GetListSuperAdminResponse) {}
+    rpc Update(UpdateSuperAdmin) returns (SuperAdmin) {}
+    rpc Delete(SuperAdminPrimaryKey) returns (Empty) {}
+}
+
+message Empty {}
+
+message SuperAdminPrimaryKey {
+    string id = 1;
+}
+
+message CreateSuperAdmin {
+    string full_name = 1;
+    string phone = 2;
+    string password = 3;
+    double salary = 4;
+    int32 months_worked = 5;
+    double ielts_score = 6;
+}
+
+message SuperAdmin {
+    string id = 1;
+    string extra_id = 2;
+    string full_name = 3;
+    string phone = 4;
+    string password = 5;
+    double salary = 6;
+    int32 months_worked = 7;
+    double ielts_score = 8;
+    string created_at = 9;
+}
+
+message UpdateSuperAdmin {
+    string full_name = 1;
+    string phone = 2;
+    string password = 3;
+    double salary = 4;
+    int32 months_worked = 5;
+    double ielts_score = 6;
+}
+
+message GetListSuperAdminRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+    string search = 3;
+}
+
+message GetListSuperAdminResponse {
+    int64 Count = 1;
+    repeated SuperAdmin SuperAdmins = 2;
+}

@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package administrators;
+
+option go_package = "genproto/user_service";
+
+service AdministratorsService {
+    rpc Create(CreateAdminstrator) returns (Adminstrator) {}
+    rpc GetById(AdminstratorPrimaryKey) returns (Adminstrator) {}
+    rpc GetAll(GetListAdminstratorsRequest) returns (GetListAdminstratorsResponse) {}
+    rpc Update(UpdateAdminstrator) returns (Adminstrator) {}
+    rpc Delete(AdminstratorPrimaryKey) returns (Empty) {}
+}
+
+message Empty {}
+
+message AdminstratorPrimaryKey {
+    string id = 1;
+}
+
+message CreateAdminstrator {
+    string full_name = 1;
+    string phone = 2;
+    string password = 3;
+    double salary = 4;
+    int32  months_worked = 5;
+    double ielts_score = 6;
+    string branch_id = 7;
+}
+
+message Adminstrator {
+    string id = 1;
+    string extra_id = 2;
+    string full_name = 3;
+    string phone = 4;
+    string password = 5;
+    double salary = 6;
+    int32  months_worked = 7;
+    double ielts_score = 8;
+    string branch_id = 9;
+    string created_at = 10;
+}
+
+message UpdateAdminstrator {
+    string full_name = 1;
+    string phone = 2;
+    string password = 3;
+    double salary = 4;
+    int32  months_worked = 5;
+    double ielts_score = 6;
+    string branch_id = 7;
+}
+
+message GetListAdminstratorsRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+    string search = 3;
+}
+
+message GetListAdminstratorsResponse {
+    int64 Count = 1;
+    repeated Adminstrator Adminstrators = 2;
+}

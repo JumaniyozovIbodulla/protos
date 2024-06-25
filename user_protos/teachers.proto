@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package teachers;
+
+option go_package = "genproto/user_service";
+
+service TeacherService {
+    rpc Create(CreateTeacher) returns (Teacher) {}
+    rpc GetById(TeacherPrimaryKey) returns (Teacher) {}
+    rpc GetAll(GetListTeachersRequest) returns (GetListTeachersResponse) {}
+    rpc Update(UpdateTeacher) returns (Teacher) {}
+    rpc Delete(TeacherPrimaryKey) returns (Empty) {}
+}
+
+message Empty {}
+
+message TeacherPrimaryKey {
+    string id = 1;
+}
+
+message CreateTeacher {
+    string full_name = 1;
+    string phone = 2;
+    string password = 3;
+    double salary = 4;
+    int32  months_worked = 5;
+    double ielts_score = 6;
+    int32  ielts_attepms_count = 7;
+    string support_teacher_id = 8;
+    string branch_id = 9;
+    string group_id = 10;
+}
+
+message Teacher {
+    string id = 1;
+    string extra_id = 2;
+    string full_name = 3;
+    string phone = 4;
+    string password = 5;
+    double salary = 6;
+    int32  months_worked = 7;
+    double ielts_score = 8;
+    int32  ielts_attepms_count = 9;
+    string support_teacher_id = 10;
+    string branch_id = 11;
+    string group_id = 12;
+    string created_at = 13;
+}
+
+message UpdateTeacher {
+    string full_name = 1;
+    string phone = 2;
+    string password = 3;
+    double salary = 4;
+    int32  months_worked = 5;
+    double ielts_score = 6;
+    int32  ielts_attepms_count = 7;
+    string support_teacher_id = 8;
+    string branch_id = 9;
+    string group_id = 10;
+}
+
+message GetListTeachersRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+    string search = 3;
+}
+
+message GetListTeachersResponse {
+    int64 Count = 1;
+    repeated Teacher Teachers = 2;
+}

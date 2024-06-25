@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package branches;
+
+option go_package = "genproto/user_service";
+
+service BranchesService {
+    rpc Create(CreateBranch) returns (Branch) {}
+    rpc GetById(BranchePrimaryKey) returns (Branch) {}
+    rpc GetAll(GetListBranchesRequest) returns (GetListBranchesResponse) {}
+    rpc Update(UpdateBranch) returns (Branch) {}
+    rpc Delete(BranchePrimaryKey) returns (Empty) {}
+}
+
+message Location {
+    double latitude = 1;
+    double longitude = 2;
+}
+
+message Empty {}
+
+message BranchePrimaryKey {
+    string id = 1;
+}
+
+message CreateBranch {
+    string name = 1;
+    Location location = 2;
+    string super_admin_id = 3;
+}
+
+message Branch {
+    string id = 1;
+    string name = 2;
+    Location location = 3;
+    string super_admin_id = 4;
+    string created_at = 5;
+}
+
+message UpdateBranch {
+    string name = 1;
+    Location location = 2;
+    string super_admin_id = 3;
+}
+
+message GetListBranchesRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+    string search = 3;
+}
+
+message GetListBranchesResponse {
+    int64 Count = 1;
+    repeated Branch Branches = 2;
+}

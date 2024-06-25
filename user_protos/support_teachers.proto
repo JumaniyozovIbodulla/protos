@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package support_teachers;
+
+option go_package = "genproto/user_service";
+
+service SupportTeacherService {
+    rpc Create(CreateSupportTeacher) returns (SupportTeacher) {}
+    rpc GetById(SupportTeacherPrimaryKey) returns (SupportTeacher) {}
+    rpc GetAll(GetListSupportTeachersRequest) returns (GetListSupportTeachersResponse) {}
+    rpc Update(UpdateSupportTeacher) returns (SupportTeacher) {}
+    rpc Delete(SupportTeacherPrimaryKey) returns (Empty) {}
+}
+
+message Empty {}
+
+message SupportTeacherPrimaryKey {
+    string id = 1;
+}
+
+message CreateSupportTeacher {
+    string full_name = 1;
+    string phone = 2;
+    string password = 3;
+    double ielts_score = 4;
+    int32  ielts_attepms_count = 5;
+    double salary = 6;
+    int32  months_worked = 7;
+    string branch_id = 8;
+    string group_id = 9;
+}
+
+message SupportTeacher {
+    string id = 1;
+    string extra_id = 2;
+    string full_name = 3;
+    string phone = 4;
+    string password = 5;
+    double ielts_score = 6;
+    int32  ielts_attepms_count = 7;
+    double salary = 8;
+    int32  months_worked = 9;
+    string branch_id = 10;
+    string group_id = 11;
+    string created_at = 12;
+}
+
+message UpdateSupportTeacher {
+    string full_name = 1;
+    string phone = 2;
+    string password = 3;
+    double ielts_score = 4;
+    int32  ielts_attepms_count = 5;
+    double salary = 6;
+    int32  months_worked = 7;
+    string branch_id = 8;
+    string group_id = 9;
+}
+
+message GetListSupportTeachersRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+    string search = 3;
+}
+
+message GetListSupportTeachersResponse {
+    int64 Count = 1;
+    repeated SupportTeacher SupportTeachers = 2;
+}
