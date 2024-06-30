@@ -35,16 +35,18 @@ message Event {
     string start_time = 5;
     int32  duration_hours = 6;
     string branch_id = 7;
-    string created_at = 8;
+    int64 is_active = 8;
+    string created_at = 9;
 }
 
 message UpdateEvent {
-    string topic = 1;
-    string descrioption = 2;
-    string day = 3;
-    string start_time = 4;
-    int32  duration_hours = 5;
-    string branch_id = 6;
+    string id = 1;
+    string topic = 2;
+    string descrioption = 3;
+    string day = 4;
+    string start_time = 5;
+    int32  duration_hours = 6;
+    string branch_id = 7;
 }
 
 message GetListEventsRequest {

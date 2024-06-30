@@ -40,18 +40,20 @@ message Student {
     double total_sum = 8;
     string branch_id = 9;
     string group_id = 10;
-    string created_at = 11;
+    int64 is_active = 11;
+    string created_at = 12;
 }
 
 message UpdateStudent {
-    string full_name = 1;
-    string phone = 2;
-    string password = 3;
-    double paid_sum = 4;
-    int32  course_count = 5;
-    double total_sum = 6;
-    string branch_id = 7;
-    string group_id = 8;
+    string id = 1;
+    string full_name = 2;
+    string phone = 3;
+    string password = 4;
+    double paid_sum = 5;
+    int32  course_count = 6;
+    double total_sum = 7;
+    string branch_id = 8;
+    string group_id = 9;
 }
 
 message GetListStudentsRequest {

@@ -38,17 +38,19 @@ message Adminstrator {
     int32  months_worked = 7;
     double ielts_score = 8;
     string branch_id = 9;
-    string created_at = 10;
+    int64 is_active = 10;
+    string created_at = 11;
 }
 
 message UpdateAdminstrator {
-    string full_name = 1;
-    string phone = 2;
-    string password = 3;
-    double salary = 4;
-    int32  months_worked = 5;
-    double ielts_score = 6;
-    string branch_id = 7;
+    string id = 1;
+    string full_name = 2;
+    string phone = 3;
+    string password = 4;
+    double salary = 5;
+    int32  months_worked = 6;
+    double ielts_score = 7;
+    string branch_id = 8;
 }
 
 message GetListAdminstratorsRequest {

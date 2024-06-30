@@ -34,13 +34,15 @@ message Branch {
     string name = 2;
     Location location = 3;
     string super_admin_id = 4;
-    string created_at = 5;
+    int64 is_active = 5;
+    string created_at = 6;
 }
 
 message UpdateBranch {
-    string name = 1;
-    Location location = 2;
-    string super_admin_id = 3;
+    string id = 1;
+    string name = 2;
+    Location location = 3;
+    string super_admin_id = 4;
 }
 
 message GetListBranchesRequest {

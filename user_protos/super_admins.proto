@@ -40,12 +40,13 @@ message SuperAdmin {
 }
 
 message UpdateSuperAdmin {
-    string full_name = 1;
-    string phone = 2;
-    string password = 3;
-    double salary = 4;
-    int32 months_worked = 5;
-    double ielts_score = 6;
+    string id = 1;
+    string full_name = 2;
+    string phone = 3;
+    string password = 4;
+    double salary = 5;
+    int32 months_worked = 6;
+    double ielts_score = 7;
 }
 
 message GetListSuperAdminRequest {

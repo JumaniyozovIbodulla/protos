@@ -44,20 +44,22 @@ message Teacher {
     string support_teacher_id = 10;
     string branch_id = 11;
     string group_id = 12;
-    string created_at = 13;
+    int64 is_active = 13;
+    string created_at = 14;
 }
 
 message UpdateTeacher {
-    string full_name = 1;
-    string phone = 2;
-    string password = 3;
-    double salary = 4;
-    int32  months_worked = 5;
-    double ielts_score = 6;
-    int32  ielts_attepms_count = 7;
-    string support_teacher_id = 8;
-    string branch_id = 9;
-    string group_id = 10;
+    string id = 1;
+    string full_name = 2;
+    string phone = 3;
+    string password = 4;
+    double salary = 5;
+    int32  months_worked = 6;
+    double ielts_score = 7;
+    int32  ielts_attepms_count = 8;
+    string support_teacher_id = 9;
+    string branch_id = 10;
+    string group_id = 11;
 }
 
 message GetListTeachersRequest {

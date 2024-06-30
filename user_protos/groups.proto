@@ -44,15 +44,17 @@ message Group {
     int32 months = 5;
     int32 number_of_students = 6;
     string branch_id = 7;
-    string created_at = 8;
+    int64 is_active = 8;
+    string created_at = 9;
 }
 
 message UpdateGroup {
-    string name = 1;
-    CourseType level = 2;
-    int32 months = 3;
-    int32 number_of_students = 4;
-    string branch_id = 5;
+    string id = 1;
+    string name = 2;
+    CourseType level = 3;
+    int32 months = 4;
+    int32 number_of_students = 5;
+    string branch_id = 6;
 }
 
 message GetListGroupsRequest {
