@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package schedules;
+
+option go_package = "genproto/schedule_service";
+
+service ScheduleService {
+    rpc Create(CreateSchedule) returns (Schedule) {}
+    rpc GetById(SchedulePrimaryKey) returns (Schedule) {}
+    rpc GetAll(GetListScheduleRequest) returns (GetListScheduleResponse) {}
+    rpc Update(UpdateSchedule) returns (Schedule) {}
+    rpc Delete(SchedulePrimaryKey) returns (Empty) {}
+}
+
+message Empty {}
+
+message SchedulePrimaryKey {
+    string id = 1;
+}
+
+message CreateSchedule {
+    string group_id = 1;
+    string start_time = 2;
+    string end_time = 3;
+    string branch_id = 4;
+    string teacher_id = 5;
+    string support_teacher_id = 6;
+}
+
+message Schedule {
+    string id = 1;
+    string group_id = 2;
+    string start_time = 3;
+    string end_time = 4;
+    string branch_id = 5;
+    string teacher_id = 6;
+    string support_teacher_id = 7;
+    string created_at = 8;
+}
+
+message UpdateSchedule {
+    string id = 1;
+    string group_id = 2;
+    string start_time = 3;
+    string end_time = 4;
+    string branch_id = 5;
+    string teacher_id = 6;
+    string support_teacher_id = 7;
+}
+
+message GetListScheduleRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+}
+
+message GetListScheduleResponse {
+    int64 Count = 1;
+    repeated Schedule Schedules = 2;
+}
