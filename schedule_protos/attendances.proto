@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package attendances;
+
+option go_package = "genproto/schedule_service";
+
+service AttendanceService {
+    rpc Create(CreateAttendance) returns (Attendance) {}
+    rpc GetById(AttendancePrimaryKey) returns (Attendance) {}
+    rpc GetAll(GetListAttendanceRequest) returns (GetListAttendanceResponse) {}
+    rpc Update(UpdateAttendance) returns (Attendance) {}
+    rpc Delete(AttendancePrimaryKey) returns (Empty) {}
+}
+
+message Empty {}
+
+enum Attend_type {
+    attended = 0;
+    absent = 1;
+    late = 2;
+}
+
+message AttendancePrimaryKey {
+    string id = 1;
+}
+
+message CreateAttendance {
+    string lesson_id = 2;
+    string student_id = 3;
+    Attend_type status = 4;
+    int32 late_minute = 5;
+}
+
+message Attendance {
+    string id = 1;
+    string lesson_id = 2;
+    string student_id = 3;
+    Attend_type status = 4;
+    int32 late_minute = 5;
+}
+
+message UpdateAttendance {
+    string id = 1;
+    string lesson_id = 2;
+    string student_id = 3;
+    Attend_type status = 4;
+    int32 late_minute = 5;
+}
+
+message GetListAttendanceRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+}
+
+message GetListAttendanceResponse {
+    int64 Count = 1;
+    repeated Attendance Attendances = 2;
+}
