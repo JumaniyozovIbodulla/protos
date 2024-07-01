@@ -35,13 +35,14 @@ message Student {
     string full_name = 3;
     string phone = 4;
     string password = 5;
-    double paid_sum = 6;
-    int32  course_count = 7;
-    double total_sum = 8;
-    string branch_id = 9;
-    string group_id = 10;
-    int64 is_active = 11;
-    string created_at = 12;
+    double scores = 6;
+    double paid_sum = 7;
+    int32  course_count = 8;
+    double total_sum = 9;
+    string branch_id = 10;
+    string group_id = 11;
+    int64 is_active = 12;
+    string created_at = 13;
 }
 
 message UpdateStudent {
@@ -49,11 +50,12 @@ message UpdateStudent {
     string full_name = 2;
     string phone = 3;
     string password = 4;
-    double paid_sum = 5;
-    int32  course_count = 6;
-    double total_sum = 7;
-    string branch_id = 8;
-    string group_id = 9;
+    double scores = 5;
+    double paid_sum = 6;
+    int32  course_count = 7;
+    double total_sum = 8;
+    string branch_id = 9;
+    string group_id = 10;
 }
 
 message GetListStudentsRequest {
